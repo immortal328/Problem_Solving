@@ -1,9 +1,10 @@
 package problem_solving.leetcode_150;
 
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class WordPattern {
 
@@ -14,29 +15,28 @@ public class WordPattern {
 	}
 	
 	public static boolean wordPattern(String pattern, String s) {
-        String [] stringArray = s.split(" ");
-        Map<Character, List<Integer>> map = new HashMap<>();
+        String [] strArr = s.split(" ");
+        String[] patterArr = pattern.split("");
+        
+        Map<Character, String> map = new HashMap<>();
+        
+        Set<String> strSet = new HashSet<>(Arrays.asList(strArr));
+        Set<String> patternSet = new HashSet<>(Arrays.asList(patterArr));
+   
 
+        if(pattern.length() != strArr.length){ return false;}
+        if(strSet.size() != patternSet.size()){return false;}
+        
         for(int i=0;i<pattern.length();i++){
-            List<Integer> list;
-            if(map.containsKey(pattern.charAt(i))){
-                list = map.get(pattern.charAt(i));
+            if(!map.containsKey(pattern.charAt(i))){
+                map.put(pattern.charAt(i),strArr[i]);
             }else{
-                list = new LinkedList<>();
-            }
-            list.add(i);
-            map.put(pattern.charAt(i),list);
-        }
-
-        for(List<Integer> list : map.values()){
-            for(int i=1;i<list.size();i++){
-                if(!stringArray[list.get(i)].equals(stringArray[list.get(i-1)])){
+                if(!(map.get(pattern.charAt(i)).equals(strArr[i]))){
                     return false;
                 }
             }
         }
-
-        return true;        
+        return true;
     }
 
 }
