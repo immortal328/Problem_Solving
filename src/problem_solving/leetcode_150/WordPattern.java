@@ -9,7 +9,6 @@ import java.util.Set;
 public class WordPattern {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		System.out.println(wordPattern("abba","dog cat cat dog"));
 
 	}
