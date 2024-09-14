@@ -7,8 +7,8 @@ public class Test {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String str = "smample  text";
-		str = str.replace("//s+", "");
+		String str = "smample    text";
+		str = str.replace(" ", "");
 		
 		Map<Character, Integer> map = new HashMap<>();
 		

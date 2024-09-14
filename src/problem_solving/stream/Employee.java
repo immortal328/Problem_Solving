@@ -1,4 +1,4 @@
-package problem_solving.test.stream;
+package problem_solving.stream;
 
 public class Employee {
 	
