@@ -12,10 +12,20 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class StreamPractice {
-	public static void main(String[] args) {
-
-		System.out.println("Playing with String[] of Character");
+	public static void main(String[] args) {		
+		//find vowels
 		String str1 =" Amar Pujari ";
+		str1.toLowerCase();
+		String vowels ="aeiou";
+		
+		List<Character> charVowels = str1.chars()
+		.mapToObj(chars -> (char) chars)
+		.filter(ch -> vowels.indexOf(ch) != -1)
+		.collect(Collectors.toList());
+		System.out.println("List of Character which are vowels "+ charVowels.toString());
+		
+		
+		System.out.println("Playing with String[] of Character");
 		str1 = str1.replaceAll("\\s+", "");
 		System.out.println(str1);
 		
@@ -32,6 +42,7 @@ public class StreamPractice {
 		
 		System.out.println("Playing with String[] of Words");		
 		String str = "there is tree tree is tree and tree is very far";
+		
 		String[] strArray = str.split(" ");		
 		Map<String, Long> mapOfWord = Arrays.stream(strArray)
 		.collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));		
